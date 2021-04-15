@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Diagram";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Syncfusion.EJ2.Diagrams
+@using SyncfusionMvcApplication1.Controllers
+@*@using SyncfusionMvcApplication2.Controllers*@
+<h2>Diagram Features:</h2>
+<br />
+<li> Diagram Samples - HierarchicalTree</li>
+<li> Page Editable</li>
+<li> Gridlines and snapping</li>
+<li> Theme - Bootstrap-Theme</li>
+<br />
+<div id="ControlRegion">
+    <div class="col-lg-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Diagram("diagram").Created("create").Width("100%").Height("500px").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").DataSourceSettings(ss => ss.Id("Name").ParentId("Category").DataManager(new DataManager() { Data = (List<HierarchicalDetails>)ViewBag.Nodes })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Constraints((Syncfusion.EJ2.Diagrams.DiagramConstraints.PageEditable)).Render()
+        </div>
+    </div>
+    <script type="text/javascript">
+        function create() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+            diagram.dataBind();
+        }
+        function nodeDefaults(obj, diagram) {
+            var collapseicon = obj.collapseIcon;
+            obj.shape = { type: 'Text', content: obj.data.Name };
+            obj.style = { fill: '#659be5', strokeColor: 'none', color: 'white', strokeWidth: 2 };
+            obj.borderColor = '#3a6eb5';
+            obj.backgroundColor = '#659be5';
+            obj.shape.margin = { left: 5, right: 5, bottom: 5, top: 5 };
+            obj.expandIcon = { height: 10, width: 10, shape: 'None', fill: 'lightgray', offset: { x: .5, y: 1 } };
+            obj.expandIcon.verticalAlignment = 'Auto';
+            obj.expandIcon.margin = { left: 0, right: 0, top: 0, bottom: 0 };
+            collapseicon.offset = { x: .5, y: 1 };
+            collapseicon.verticalAlignment = 'Auto';
+            collapseicon.margin = { left: 0, right: 0, top: 0, bottom: 0 };
+            collapseicon.height = 10;
+            collapseicon.width = 10;
+            collapseicon.padding.top = 5;
+            collapseicon.shape = 'None';
+            collapseicon.fill = 'lightgray';
+            return obj;
+        }
+        function connectorDefaults(connector, diagram) {
+            connector.targetDecorator.shape = 'None';
+            connector.type = 'Orthogonal';
+            connector.constraints = 0;
+            connector.cornerRadius = 5;
+            return connector;
+        }
+    </script>
+</div>

@@ -1,0 +1,30 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@*@section ControlsSection{*@
+
+    <link href="~/Content/styles/Grid/style.css" rel="stylesheet">
+    <div>
+        <div>
+            @Html.EJS().DropDownList("DataRange").Index(0).Width("220px").Placeholder("Select a Data Range").DataSource(
+                (IEnumerable<object>) ViewBag.Data).Change("valueChange").Fields(new DropDownListFieldSettings {Text = "Text", Value = "Value"}).Render()
+            <span id='msg'></span>
+        </div>
+        <br/>
+        @Html.EJS().Grid("GridOverview").Columns(col =>
+        {
+            col.Type("checkbox").HeaderText("").Field("").Width("60").AllowFiltering(false).AllowSorting(false).Add();
+            col.Field("EmployeeID").Visible(false).IsPrimaryKey(true).HeaderText("Employee ID").Width("130").Add();
+            col.Field("Employees").HeaderText("Employee Name").Template("#empTemplate").Width("200").Filter(new { type = "CheckBox" }).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+            col.Field("Designation").HeaderText("Designation").Width("170").Filter(new { type = "CheckBox" }).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+            col.Field("Mail").HeaderText("Mail").Width("230").Filter(new { type = "Menu" }).Add();
+            col.Field("Location").HeaderText("Location").Width("140").Filter(new { type = "CheckBox" }).Template("#coltemplate").Add();
+            col.Field("Status").HeaderText("Status").Width("150").Filter(new { type = "CheckBox", itemTemplate = "#StatusItemTemp" }).Template("#statusTemplate").Add();
+            col.Field("Trustworthiness").HeaderText("Trustworthiness").Filter(new { type = "CheckBox", itemTemplate = "${ trustTemp(data) }" }).Width("200").Template("#trustTemplate").Add();
+            col.Field("Rating").HeaderText("Rating").Width("160").Filter(new { type = "CheckBox", itemTemplate = "<div>${ratingDetail(data)}<div>" }).Template("#ratingTemplate").Add();
+            col.Field("Software").AllowFiltering(false).AllowSorting(false).HeaderText("Software").Width("180").Template("#progessTemplate").Add();
+            col.Field("CurrentSalary").HeaderText("Current Salary").Filter(new { type = "Menu" }).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("160").Add();
+            col.Field("Address").HeaderText("Address").Width("240").Filter(new { type = "Menu" }).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+
+        }).Render()
+    </div>
+

@@ -1,0 +1,42 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.LinearGauge  
+@{
+    ViewBag.Title = "LinearGauge";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SyncfusionMvcGraphsApplication1.Controllers.LinearGauge
+<h2>LinearGauge Features:</h2>
+<br/>
+<li> Enable Tooltip</li>
+<li> Axis Inversed</li>
+<li> Axis Opposed</li>
+<li> Orientation - Horizontal</li>
+<li> Container Type - Normal</li>
+<li> Theme - Bootstrap-Theme</li>
+<br/>
+<div id = "ControlRegion">   
+ @Html.EJS().LinearGauge("container").Load("load").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Tooltip(tooltip=>tooltip.Enable(true)).Container(container=>container.Type(ContainerType.Normal)).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+       {
+           IsInversed = true,
+           OpposedPosition=true,           
+           Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+           {
+               new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+               {
+                   Value = 50, Height=15,Width=15,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#757575",
+                   Offset ="-50",MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+               }
+           },
+           MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick {  Interval=10, Height=20 },
+           MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick {  Interval = 2, Height=10 },
+           LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel {  Offset = 48 },
+       }
+   }).Render()
+</div>
+<script>
+    var gauge;
+    function load(args) {
+        gauge = args.gauge;
+    }
+</script>

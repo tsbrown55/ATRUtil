@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "AccumulationChart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>AccumulationChart Features:</h2>
+<br/>
+<li> Series Type - Pie</li>
+<li> Theme - Bootstrap-Theme</li>
+<br/>
+<div id = "ControlRegion">
+<div class="row" style="margin-top:10px">
+    <div class="col-md-8">
+        @Html.EJS().AccumulationChart("piecontainer").Series(series =>
+                                        {
+                                            series.DataSource(ViewBag.dataSource)
+                                                  .XName("xValue")
+                                                  .YName("yValue")
+                                                  .Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
+                                                  .Radius("70%")
+                                                  .StartAngle(0)
+                                                  .EndAngle(360)
+                                                  .InnerRadius("0%")
+                                                  .Explode(true)
+                                                  .ExplodeOffset("10%")
+                                                  .ExplodeIndex(0)
+                                                  .Add();
+                                        }).EnableSmartLabels(true).Title("Income Tax").Render()
+    </div>
+</div>
+</div>

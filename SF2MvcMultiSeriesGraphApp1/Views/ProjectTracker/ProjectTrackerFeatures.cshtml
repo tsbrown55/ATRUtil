@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Kanban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Kanban;
+@using Syncfusion.EJ2.DropDowns;
+<h2>Kanban Features:</h2>
+<br />
+<li> Features - Default</li>
+<li> Theme - Bootstrap-Theme</li>
+<br />
+<div id="ControlRegion">
+    @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+           {
+               col.HeaderText("To Do").KeyField("Open").Add();
+               col.HeaderText("In progress").KeyField("InProgress").Add();
+               col.HeaderText("Testing").KeyField("Testing").Add();
+               col.HeaderText("Done").KeyField("Close").Add();
+           }).CardSettings(new KanbanCardSettings { ContentField = "Summary", HeaderField = "Id" }).Render()
+</div>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Brand</title>
+    <link rel="stylesheet" href="../Content/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="../Content/assets/fonts/fontawesome-all.min.css">
+</head>
+<body id="page-top">
+    <form id="form1" runat="server">
+
+        <div id="wrapper">
+            <div class="d-flex flex-column" id="content-wrapper">
+                <div id="content">
+
+                    <div class="container-fluid">
+                        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                            <h3 class="text-dark mb-0">Dashboard - Project Tracker</h3>
+                            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a><br />
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-6 mb-4">
+
+                                <p class="text-dark mb-0">
+                                    Control list at:&nbsp;
+                                    <a target="_blank" href="http://sp16.geek-ish.com/_layouts/15/start.aspx#/Lists/ProjectTrackerTestData/AllItems.aspx">http://sp16.geek-ish.com/_layouts/15/start.aspx#/Lists/ProjectTrackerTestData/AllItems.aspx</a>
+                                </p>
+
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="text-primary font-weight-bold m-0">Projects</h6>
+                                    </div>
+                                    <div class="card-body" id="projectCards" runat="server">
+
+                                        <%--
+                                        <h4 class="small font-weight-bold">Server migration<span class="float-right">20%</span></h4>
+                                        <div class="progress mb-4">
+                                            <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="sr-only">20%</span></div>
+                                        </div>
+                                        <h4 class="small font-weight-bold">Sales tracking<span class="float-right">40%</span></h4>
+                                        <div class="progress mb-4">
+                                            <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="sr-only">40%</span></div>
+                                        </div>
+                                        <h4 class="small font-weight-bold">Customer Database<span class="float-right">60%</span></h4>
+                                        <div class="progress mb-4">
+                                            <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60%</span></div>
+                                        </div>
+                                        <h4 class="small font-weight-bold">Payout Details<span class="float-right">80%</span></h4>
+                                        <div class="progress mb-4">
+                                            <div class="progress-bar bg-info" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="sr-only">80%</span></div>
+                                        </div>
+                                        <h4 class="small font-weight-bold">Account setup<span class="float-right">Complete!</span></h4>
+                                        <div class="progress mb-4">
+                                            <div class="progress-bar bg-success" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"><span class="sr-only">100%</span></div>
+                                        </div>
+                                        --%>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <footer class="bg-white sticky-footer">
+                    <div class="container my-auto">
+                        <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
+                    </div>
+                </footer>
+            </div>
+            <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/chart.min.js"></script>
+        <script src="assets/js/bs-init.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+        <script src="assets/js/theme.js"></script>
+    </form>
+</body>
+</html>

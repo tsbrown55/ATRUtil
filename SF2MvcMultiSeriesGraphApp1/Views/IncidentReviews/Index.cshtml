@@ -1,0 +1,117 @@
+﻿@model IEnumerable<SyncfusionMvcApplicationRichTextEditor3.Models.IncidentReview>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Severity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignmentGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opened)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Closed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Caller)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FauxContact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NavigationPath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Severity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignmentGroup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opened)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Closed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Caller)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FauxContact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NavigationPath)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IncidentReviewId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IncidentReviewId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IncidentReviewId })
+        </td>
+    </tr>
+}
+
+</table>

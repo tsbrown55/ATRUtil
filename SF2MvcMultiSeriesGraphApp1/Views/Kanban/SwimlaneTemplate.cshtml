@@ -1,0 +1,77 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Kanban
+
+@section ControlsSection {
+    <div class="control-section">
+        <div class="control_wrapper">
+            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+            {
+                col.HeaderText("Initial Data Entry").KeyField("Open").Add();
+                col.HeaderText("IPA Scheduled").KeyField("InProgress").Add();
+                col.HeaderText("Pending Approval").KeyField("Pending").Add();
+                col.HeaderText("Complete").KeyField("Close").Add();
+                col.HeaderText("Notify").KeyField("Done").Add();
+            }).CardSettings(card =>
+            {
+                card.ContentField("Summary").HeaderField("Id");
+            }).SwimlaneSettings(swim =>
+            {
+                swim.KeyField("Assignee").Template("#swimlaneTemplate");
+            }).Render()
+
+        </div>
+    </div>
+    <script id="swimlaneTemplate" type="text/x-jsrender">
+        <div class='swimlane-template e-swimlane-template-table' style="font-family: roboto;">
+            <div class="e-swimlane-row-text" style="width: 150px;"><img src="../Content/images/Kanban/${keyField}.png" alt="" /><span>${textField}</span></div>
+        </div>
+    </script>
+    <style>
+        .swimlane-template {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+            .swimlane-template img {
+                height: 24px;
+                width: 24px;
+                border-radius: 50%;
+            }
+
+            .swimlane-template span {
+                padding-left: 10px;
+            }
+    </style>
+
+}
+@section ActionDescription{
+    <div id="action-description" style="visibility: hidden;">
+        <p>
+            This sample demonstrates how to customize the swimlane header of Kanban. In this sample, the swimlane header is
+            customized with icons and corresponding to the mapped key fields text.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description" style="visibility: hidden;">
+        <p>
+            The Kanban provides an option to customize its swimlane header using the <code>SwimlaneSettings</code> ->
+            <code>Template</code> property, which
+            accepts the string or HTML element`s ID value, which is used as the template for the swimlane header.
+        </p>
+        <p>
+            In this demo, all the swimlane headers are customized with templating as text and icons.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Swimlane Template in ASP.NET MVC Kanban control. Explore here for more details." />
+}
+
+@section Title{
+    <title>ASP.NET MVC Kanban Swimlane Template Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'></h1>
+}

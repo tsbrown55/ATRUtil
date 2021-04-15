@@ -1,0 +1,263 @@
+﻿@{
+    ViewBag.Title = "Chart";
+    ViewData["ProductName"] = "Chart";
+    Layout = "~/Views/Shared/_Layout1-noNavBar.cshtml";
+}
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Charts
+@using Syncfusion.EJ2.DropDowns
+@*@using SyncfusionMvcASplineGraphApplication1.Controllers;*@
+
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/css/style.css" rel="stylesheet">
+<style type="text/css">
+    .auto-style1 {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 100%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .auto-style2 {
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        text-align: center;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+</style>
+
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="auto-style1" id="headerBanner">
+                    <img alt="Peek Traffic, 5401 N Sam Houston Pkwy W, Houston TX 77086, 1-800-848-7025" class="img-fluid" style="max-width: 100%; height: auto;" src="~/Content/images/bnnr1.PNG" /><br />
+                </div>
+            </div>
+            <div class="auto-style2" id="dataTableHeader">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    Name:
+                                                </strong>
+                                            </td>
+                                            <td class="text-left">
+                                                085 (Seq #)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    Description:
+                                                </strong>
+                                            </td>
+                                            <td class="text-left">
+                                                DE Rt 20 E of MD Line
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    Site:
+                                                </strong>
+                                            </td>
+                                            <td class="text-left">
+                                                000000003409
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    City:
+                                                </strong>
+                                            </td>
+                                            <td class="text-left">
+                                                Seaford
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    Latitude:
+                                                </strong>
+                                            </td>
+                                            <td class="text-left">
+                                                0.000000 N
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    Started:
+                                                </strong>
+                                            </td>
+                                            <td class="text-left">
+                                                10/8/2020 0:00
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-6">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td colspan="3">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    &nbsp;
+                                                </strong>
+                                            </td>
+                                            <td colspan="3">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    Station:
+                                                </strong>
+                                            </td>
+                                            <td colspan="3" class="text-left">
+                                                000000008085
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    County:
+                                                </strong>
+                                            </td>
+                                            <td class="text-left">
+                                                Sussex
+                                            </td>
+                                            <td class="text-left">
+                                                <strong>State</strong>:
+                                            </td>
+                                            <td class="text-left">
+                                                DE
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    Longitude:
+                                                </strong>
+                                            </td>
+                                            <td colspan="3" class="text-left">
+                                                0.000000 E
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">
+                                                <strong>
+                                                    Ended:
+                                                </strong>
+                                            </td>
+                                            <td colspan="3" class="text-left">
+                                                10/8/2020 23:59
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6" id="graph" style="text-align: left;">
+
+                        <div id="ControlRegion">
+                            @Html.EJS().Chart("container").PrimaryYAxis(py => py.Title("Value")).PrimaryXAxis(px => px.Title("Hour").IntervalType(IntervalType.Hours).
+                                ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)).Series(series =>
+                                {
+                                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+                                        .DataSource(ViewBag.series4/*series2*/ /*"series1"*/)
+                                        .Name("series2(smoothed)")
+                                        .XName("Hour")
+                                        .YName("Value") /*.Size("bubbleSize")*/
+                                        .Add();
+
+                                    //series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+                                    //    .DataSource(ViewBag.series3 /*"series1"*/)
+                                    //    .Name("series3(smoothed)")
+                                    //    .XName("Date")
+                                    //    .YName("Value") /*.Size("bubbleSize")*/
+                                    //    .Add();
+                                }
+                                ).Render()
+                            <li>
+                                <span>
+                                    Control list at: <a target="_blank"
+                                                        href="http://sp16.geek-ish.com/_layouts/15/start.aspx#/Lists/GraphWidgetTestData/AllItems.aspx#InplviewHash53757497-d10b-4ee8-b3b9-51aa209718b5=">http://sp16.geek-ish.com/.../Lists/GraphWidgetTestData/</a>
+                                </span>
+                            </li>
+                            <li>Excel: <a target="_blank" href="~/Content/xls/000000008085.xlsx"><img src="~/Content/images/Excel30x30.png" /></a></li>
+                            <li> Series Type - Line</li>
+                            <li> Theme - Bootstrap-Theme</li>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-8">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/jquery.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/scripts.js"></script>
+
+
+

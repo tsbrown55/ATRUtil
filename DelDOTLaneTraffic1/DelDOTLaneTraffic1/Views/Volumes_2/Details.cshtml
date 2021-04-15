@@ -1,0 +1,42 @@
+﻿@model DelDOTLaneTraffic1.Models.Volume
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Volume</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportHour)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VolumeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

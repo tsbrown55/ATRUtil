@@ -1,0 +1,237 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+@*<link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />*@
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+</div>
+
+<table class="tabstyle" style="margin-top:20px">
+    <tr>
+        <td style="padding:25px">
+            <div class="desc">
+                <p>
+                    Thank you for using Syncfusion ASP.NET MVC Wizard. We have modified the default ASP.NET MVC internet application project template based on Syncfusion controls and settings.
+                    The following are the samples links:
+                </p>
+            </div>
+            <div class="sf-samples">
+                <ul class="ulstyle">
+                    <li class="list">
+                        <div class="column">
+                            @Html.ActionLink("RichTextEditor", "Index", "RichTextEditor", null, new { Style = "text-decoration:none;color:#616161;" })
+                        </div>
+                    </li>
+                    <li class="list">
+                        <div class="column">
+                            @Html.ActionLink("TreeView", "TreeViewFeatures", "TreeView", null, new { Style = "text-decoration:none;color:#616161;" })
+                        </div>
+                    </li>
+                    @*<li class="list">
+                            <div class="column">
+                                @Html.ActionLink("Diagram", "DiagramFeatures", "Diagram", null, new { Style = "text-decoration:none;color:#616161;" })
+                            </div>
+                        </li>*@
+                    @*<li class="list">
+                            <div class="column">
+                                @Html.ActionLink("Diagram - Hierarchical", "HierarchicalFeatures", "Diagram", null, new { Style = "text-decoration:none;color:#616161;" })
+                            </div>
+                        </li>*@
+                    <li class="list">
+                        <div class="column">
+                            @Html.ActionLink("Kanban", "KanbanFeatures", "Kanban", null, new { Style = "text-decoration:none;color:#616161;" })
+                        </div>
+                    </li>
+
+                    <li class="list">
+                        @*<div class="column">
+                                @Html.ActionLink("Chart > Spline", "SplineGraphTest", "Chart", null, new { Style = "text-decoration:none;color:#616161;" })
+                            </div>*@
+
+
+                        <div class="column">
+                            <a class="" data-toggle="collapse" data-parent="#card-141782" href="#card-element-19050" style="text-decoration: none; margin-left: 0px;">Charts </a>
+
+                            <div id="card-element-19050" class="collapse">
+                                <div class="">
+                                    <ul class="" style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/AccumulationChart/Doughnut" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    Doughnut
+                                                </a>
+                                            </div>
+                                        </li>
+                                        
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/Kanban/KanbanFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    Kanban
+                                                </a>
+                                            </div>
+                                        </li>
+                                        
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/Chart/SplineGraphTest" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    Spline
+                                                </a>
+                                            </div>
+                                        </li>
+                                        
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/Diagram/DiagramFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    Diagram
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/HeatMap/HeatMapFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    HeatMap
+                                                </a>
+                                            </div>
+                                        </li>
+
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/Chart/ChartFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    Chart
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/AccumulationChart/AccumulationChartFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    AccumulationChart
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/StockChart/StockChartFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    StockChart
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/Maps/MapsFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    Maps
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/TreeMap/TreeMapFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    TreeMap
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/RangeNavigator/RangeNavigatorFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    RangeNavigator
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/LinearGauge/LinearGaugeFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    LinearGauge
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/CircularGauge/CircularGaugeFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    CircularGauge
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/SparkLine/SparkLineFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    SparkLine
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/PivotChart/PivotChartFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    PivotChart
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/SmithChart/SmithChartFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    SmithChart
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list" style="box-sizing: border-box;">
+                                            <div class="column" style="box-sizing: border-box;">
+                                                <a target="_blank" href="~/Barcode/BarcodeFeatures" style="box-sizing: border-box; color: rgb(97, 97, 97); text-decoration: none; background-color: transparent;">
+                                                    Barcode
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </li>
+                    
+                    <li class="list">
+                        <div class="column">
+                            @Html.ActionLink("DataGrid", "ToolbarFeatures", "Toolbar", null, new { Style = "text-decoration:none;color:#616161;" })
+                        </div>
+                    </li>
+                    
+                    <li class="list">
+                        <div class="column">
+                            @Html.ActionLink("Toolbar", "ToolbarFeatures", "Toolbar", null, new { Style = "text-decoration:none;color:#616161;" })
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="clear"> </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Kanban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Kanban;
+@using Syncfusion.EJ2.DropDowns;
+<h2>Kanban Features:</h2>
+<br/>
+<li> Features - SwimlaneTemplate</li>
+<li> Theme - Bootstrap-Theme</li>
+<br/>
+<div id = "ControlRegion">
+ <div class="control_wrapper" style="font-family: roboto;">
+            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewBag.data).Columns(col=> {
+           col.HeaderText("Initial Data Entry").KeyField("Initializing").Add();
+           col.HeaderText("IPA Scheduled").KeyField("Scheduling").Add();
+           col.HeaderText("Pending Approval").KeyField("Approving").Add();
+           col.HeaderText("Complete").KeyField("Completing").Add();
+           //col.HeaderText("Notify").KeyField("Notifying").Add();
+           //                                                                                                                 col.HeaderText("Complete").KeyField("Close").Add();
+       }).CardSettings(new KanbanCardSettings { ContentField = "Summary", HeaderField = "Title" }).SwimlaneSettings(new KanbanSwimlaneSettings { KeyField = "Assignee", Template = "#swimlaneTemplate" }).Render()
+        </div>
+</div>
+<script id="swimlaneTemplate" type="text/x-jsrender">
+        <div class='swimlane-template e-swimlane-template-table' style="font-family: roboto;">
+            <div class="e-swimlane-row-text" style="width: 175px;"><img src="../Content/images/Kanban/${keyField}.png" alt="" /><span>${textField}</span></div>
+        </div>
+    </script>
+    <style>
+        .swimlane-template {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 500;
+            width: 95%;
+        }
+            .swimlane-template img {
+                height: 24px;
+                width: 24px;
+                border-radius: 50%;
+            }
+            .swimlane-template span {
+                padding-left: 10px;
+            }
+    </style>

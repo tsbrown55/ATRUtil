@@ -1,0 +1,35 @@
+﻿@using Syncfusion.EJ2;
+@{
+    ViewBag.Title = "RangeNavigator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>RangeNavigator Features</h2>
+<br />
+<li> RTL</li>
+<li> Theme - Bootstrap-Theme</li>
+<br/><br/>
+<div id = "ControlRegion">
+@(Html.EJS().RangeNavigator("container").EnableRtl(true)
+               .ValueType(Syncfusion.EJ2.Charts.RangeValueType.DateTime)
+               .Series(sr =>
+               {
+                   sr.DataSource("series1").XName("x").YName("y").Type(Syncfusion.EJ2.Charts.RangeNavigatorType.Area).Add();
+               }).Tooltip(tl => tl.Enable(true).Format("MM/dd/yyyy").DisplayMode(Syncfusion.EJ2.Charts.TooltipDisplayMode.Always)).Render()
+            )
+</div>
+<script>
+    var series1 = [];
+    var point1;
+    var value = 80;
+    var i;
+    for (i = 1; i <= 20; i++) {
+        if (Math.random() > 0.5) {
+            value += Math.random();
+        }
+        else {
+            value -= Math.random();
+        }
+        point1 = { x: new Date(2018, 0, i), y: value.toFixed(1), bubbleSize: Math.random() };
+        series1.push(point1);
+    }
+</script>

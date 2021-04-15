@@ -1,0 +1,13 @@
+@{
+    ViewBag.Title = "RichTextEditor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>RichTextEditor Features:</h2>
+<br/>
+<li> RichTextEditor Samples - Default</li>
+<li> Theme - Bootstrap-Theme</li>
+<br/>
+<div id = "ControlRegion">
+              @Html.EJS().RichTextEditor("default").
+              ToolbarSettings(e => e.Items((object)ViewBag.tools)).Value((string)ViewBag.value).ShowCharCount(true).MaxLength(2000).Render()
+</div>

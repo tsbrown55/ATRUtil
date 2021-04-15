@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SyncfusionMvcDashboardLayoutApplication1</title>
+    @Styles.Render("~/Content/css")
+    
+     
+   @Styles.Render("~/Content/ej2/bootstrap.css") 
+   @Scripts.Render("~/Scripts/ej2/ej2.min.js") 
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+        
+        <div id="control-content">
+            @if (IsSectionDefined("ControlsSection"))
+            {
+                @RenderSection("ControlsSection", required: false)
+            }
+        </div>
+    </div>
+    <footer>
+        <div class="container body-content">
+            <hr />
+            <p>&copy; @DateTime.Now.Year - SyncfusionMvcDashboardLayoutApplication1</p>
+        </div>
+    </footer>
+
+    @Html.EJS().ScriptManager()
+    @RenderSection("scripts", required: false)
+</body>
+</html>

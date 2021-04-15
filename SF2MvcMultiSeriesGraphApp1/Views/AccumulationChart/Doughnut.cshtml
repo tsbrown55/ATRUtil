@@ -1,0 +1,54 @@
+﻿@using Syncfusion.EJ2;
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-8">
+            Control list at: <a target="_blank" href="http://sp16.geek-ish.com/Lists/DoughnutGraphData/AllItems.aspx">http://sp16.geek-ish.com/Lists/DoughnutGraphData/AllItems.aspx</a>
+            <br/>
+            <h2>Accumulation Chart - Doughnut</h2><br />
+            <div id="ControlRegion">
+                <div id="" style="text-align:center">
+                    @*@(Html.EJS().AccumulationChart("container").Series(
+            series =>
+            {
+                series.DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600").Color("#ffffff"))).
+                    XName("xValue").
+                    YName("yValue").
+                    Name("Project").
+                    Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).
+                    Radius("70%").
+                    DataSource(ViewBag.dataSource).
+                    StartAngle(0).
+                    EndAngle(360).
+                    InnerRadius("40%").
+                    Explode(true).
+                    ExplodeOffset("10%").
+                    ExplodeIndex(3).Add();
+            }).EnableSmartLabels(true).Title("Project Cost Breakdown").LegendSettings(
+                legend =>
+                {
+                    legend.Position(Syncfusion.EJ2.Charts.LegendPosition.Top).Visible(true);
+                }).Tooltip(tl => tl.Enable(true)).Load("load").Render()
+        )*@
+        
+                    @Html.EJS().AccumulationChart("piecontainer").Series(series =>
+                    {
+                        series.DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600").Color("#ffffff")))
+                            .DataSource(ViewBag.dataSource)
+                            .XName("xValue")
+                            .YName("yValue") 
+                            //.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
+                            .Radius("70%")
+                            .StartAngle(0)
+                            .EndAngle(360)
+                            .InnerRadius("40%")
+                            .Explode(true)
+                            .ExplodeOffset("10%")
+                            .ExplodeIndex(0)
+                            .Add();
+                    }).EnableSmartLabels(true).Title("Project Breakdowns").Render()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

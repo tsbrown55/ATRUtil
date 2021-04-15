@@ -1,0 +1,82 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Maps
+@{
+    ViewBag.Title = "Maps";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Maps Features:</h2>
+<br/>
+<li> Legend Alignment - Center</li>
+<li> Legend Position - Top</li>
+<li> Legend Type - Default</li>
+<li> Projection - Mercator</li>
+<li> Show Marker</li>
+<li> Show Data Label</li>
+<li> Enable Tooltip</li>
+<li> Enable Highlight</li>
+<li> Enable Selection</li>
+<li> Enable Zooming</li>
+<li> Theme - Bootstrap-Theme</li>
+<br/>
+<div id = "ControlRegion">
+<div class="col-lg-9 control-section">
+    <div id="container" class="row">
+        @Html.EJS().Maps("container").Load("load").ProjectionType(ProjectionType.Mercator).ZoomSettings(zoomSettings=>zoomSettings.Enable(true)).TitleSettings(new Syncfusion.EJ2.Maps.MapsTitleSettings
+   {
+       Text = "USA Election Results - 2016",
+       TextStyle = new MapsFont { Size = "16px", Opacity = 1 }
+   }).LegendSettings(new Syncfusion.EJ2.Maps.MapsLegendSettings
+   {
+       Visible = true,
+       Mode = Syncfusion.EJ2.Maps.LegendMode.Default,
+       Position = Syncfusion.EJ2.Maps.LegendPosition.Top,
+       Alignment = Syncfusion.EJ2.Maps.Alignment.Center,
+       Width = "18%",
+       Height = "40px",      
+       TextStyle = new MapsFont { FontWeight = "400", Size = "14px" }
+   }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer>
+   {
+       new Syncfusion.EJ2.Maps.MapsLayer
+       {
+           ShapeData = ViewBag.ShapeData,
+           ShapePropertyPath = "name",
+           ShapeDataPath = "State",
+           DataSource =  ViewBag.DataSource,
+           TooltipSettings = new MapsTooltipSettings
+           {
+               Visible = true, ValuePath = "State"
+           },
+           HighlightSettings = new MapsHighlightSettings{ Enable = true, Fill="#A3B0D0" },
+           SelectionSettings = new MapsSelectionSettings{ Enable = true, Fill = "#4C515B", Opacity = 1 },
+           DataLabelSettings = new MapsDataLabelSettings{
+               Visible = true,
+               LabelPath = "State",
+               SmartLabelMode = SmartLabelMode.Trim
+           },
+	   MarkerSettings = new List<MapsMarker>{
+					new MapsMarker {
+                    Visible=true,
+                    AnimationDuration=0,
+                    Shape= MarkerType.Balloon,
+                    Fill="gray",
+                    Width=15,
+                    Height=25,
+                    DataSource=ViewBag.markerDatasource
+                }
+           }, 
+           ShapeSettings = new MapsShapeSettings
+           {
+               Fill = "#E5E5E5",
+                ColorValuePath="Winner",
+               ColorMapping = ViewBag.ColorMapping
+           }
+       }}).Render()
+    </div>
+</div>
+</div>
+<script>
+    var maps;
+    function load(args) {
+        maps = args.maps;
+    }
+    </script>

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Chart";
+    ViewData["ProductName"] = "Chart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.DropDowns
+@using SyncfusionMvcGraphsApplication1.Controllers;
+<h2>Chart Features:</h2><br />
+<li> Series Type - Line</li>
+<li> Theme - Bootstrap-Theme</li>
+<br />
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-8">
+            Control list at: <a target="_blank" href="http://sp16.geek-ish.com/_layouts/15/start.aspx#/Lists/GraphWidgetTestData/AllItems.aspx#InplviewHash53757497-d10b-4ee8-b3b9-51aa209718b5=">http://sp16.geek-ish.com/_layouts/15/start.aspx#/Lists/GraphWidgetTestData/AllItems.aspx</a>
+            <br />
+            <h2>Chart</h2><br />
+            <div id="ControlRegion">
+                @Html.EJS().Chart("container").PrimaryYAxis(py => py.Title("Value")).PrimaryXAxis(px => px.Title("Month").
+                    ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)).Series(series =>
+                    {
+                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+                            .DataSource(ViewBag.series2 /*"series1"*/)
+                            .Name("series2(smoothed)")
+                            .XName("Date")
+                            .YName("Value") /*.Size("bubbleSize")*/
+                            .Add();
+
+                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+                            .DataSource(ViewBag.series3 /*"series1"*/)
+                            .Name("series3(smoothed)")
+                            .XName("Date")
+                            .YName("Value") /*.Size("bubbleSize")*/
+                            .Add();
+                    }
+                    ).Render()
+            </div>
+        </div>
+    </div>
+</div>
+

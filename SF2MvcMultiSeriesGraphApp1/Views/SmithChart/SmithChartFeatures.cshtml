@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "SmithChart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Charts;
+<h2>SmithChart Features:</h2>
+<br/>
+<li> Enable Tooltip</li>
+<li> Marker</li>
+<li> Data Label</li>
+<li> Animation</li>
+<li> Legend Position - Top</li>
+<li> Theme - Bootstrap-Theme</li>
+<br/>
+<div id = "ControlRegion">
+ @Html.EJS().Smithchart("container").Load("load").HorizontalAxis(horizontalAxis => horizontalAxis.MinorGridLines(new SmithchartSmithchartMinorGridLines { Visible = true })).RadialAxis(radial => radial.MinorGridLines(new SmithchartSmithchartMinorGridLines { Visible = true })).Radius(1).LegendSettings(legend => legend.Visible(true).Position("Top").Shape("Circle").Border(new SmithchartLegendBorder { Color = "transparent" })).RenderType(RenderType.Impedance).Title(title => title.Text("Impedance Transmission").EnableTrim(true).MaximumWidth(200).Visible(true).Font(new SmithchartSmithchartFont { Size = "16px" })).Series(series =>
+   {
+       series.Name("Transmission1").EnableAnimation(true).Marker(new SmithchartSeriesMarker { Visible = true, Shape = "rectangle", DataLabel = new SmithchartSeriesMarkerDataLabel { Visible = true} }).Width(2).Tooltip(new SmithchartSeriesTooltip { Visible = true }).EnableSmartLabels(false).Fill("#0F94C4").Add();
+       series.Name("Transmission2").EnableAnimation(true).Marker(new SmithchartSeriesMarker { Visible = true, Shape = "rectangle", DataLabel = new SmithchartSeriesMarkerDataLabel { Visible = false } }).Width(2).Tooltip(new SmithchartSeriesTooltip { Visible = true }).EnableSmartLabels(false).Fill("#EE0C88").Add();
+   }).Render()
+</div>
+<style>
+    .smithinput {
+        opacity: 1 !important;
+        position: relative !important;
+        height: 15px !important;
+        width: 15px !important;
+    }
+    .property-text {
+        font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif" !important;
+        font-size: 13px !important;
+        font-weight: 400 !important;
+    }
+    #radius > * {
+        padding: 0px !important;
+    }
+    label {
+        height: 32px !important;
+    }
+</style>
+<script>
+    var smithchart;
+    function load(args) {
+        var theme = location.hash.split('/')[1];
+        theme = theme ? theme : 'Material';
+        args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+        args.smithchart.series[0].points = [
+            { resistance: 10, reactance: 25 }, { resistance: 8, reactance: 6 },
+            { resistance: 6, reactance: 4.5 }, { resistance: 4.5, reactance: 4 },
+            { resistance: 3.5, reactance: 3 }, { resistance: 2.5, reactance: 2 },
+            { resistance: 2, reactance: 1.5 }, { resistance: 1.5, reactance: 1.25 },
+            { resistance: 1, reactance: 0.9 }, { resistance: 0.5, reactance: 0.6 },
+            { resistance: 0.3, reactance: 0.4 }, { resistance: 0, reactance: 0.15 },
+        ];
+        args.smithchart.series[0].marker = {
+            border: {
+                width: 2,
+            }
+        };
+        args.smithchart.series[1].points = [
+            { resistance: 20, reactance: -50 }, { resistance: 10, reactance: -10 },
+            { resistance: 9, reactance: -4.5 }, { resistance: 8, reactance: -3.5 },
+            { resistance: 7, reactance: -2.5 }, { resistance: 6, reactance: -1.5 },
+            { resistance: 5, reactance: -1 }, { resistance: 4.5, reactance: -0.8 },
+            { resistance: 3.5, reactance: -0.8 }, { resistance: 2.5, reactance: -0.4 },
+            { resistance: 2, reactance: -0.2 }, { resistance: 1.5, reactance: 0 },
+            { resistance: 1, reactance: 0.1 }, { resistance: 0.5, reactance: 0.2 },
+            { resistance: 0.3, reactance: 0.15 }, { resistance: 0, reactance: 0.05 },
+        ];
+        args.smithchart.series[1].marker = {
+            border: {
+                width: 2,
+            }
+        };
+        smithchart = args.smithchart;
+    }
+    </script>

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Chart";
+    ViewData["ProductName"] = "Chart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.DropDowns
+@using SyncfusionMvcASplineGraphApplication1.Controllers;
+<h2>Chart Features:</h2><br />
+<li> Series Type - Line</li>
+<li> Zooming</li>
+<li> Theme - Bootstrap-Theme</li>
+<br />
+<h2>Chart</h2><br />
+<div id="ControlRegion">
+    @Html.EJS().Chart("container").PrimaryXAxis(px => px.Title("Hours").
+                       ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)).Series(series =>
+                       {
+                           series.Type(
+              Syncfusion.EJ2.Charts.ChartSeriesType.Line
+          ).DataSource(ViewBag.series1).Name("Lane 01").XName("x").YName("y").Add();//.Size("bubbleSize").Add();
+
+                           series.Type(
+              Syncfusion.EJ2.Charts.ChartSeriesType.Line
+          ).DataSource(ViewBag.series2).Name("Lane 02").XName("x").YName("y").Add();
+                       }
+                       ).ZoomSettings(z => z.EnableMouseWheelZooming(true).EnablePinchZooming(true).EnableSelectionZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnableScrollbar(true)).PrimaryYAxis(py => py.Title("Profit ($)")).Title("Sales History of Product X").Render()
+</div>
+<script>
+    var series1 = [];
+    var point1;
+    var value = 80;
+    var i;
+    for (i = 1; i <= 24; i++) {
+        if (Math.random() > 0.5) {
+            value += Math.random();
+        }
+        else {
+            value -= Math.random();
+        }
+        point1 = { x: new Date(2010, 1, i), y: value.toFixed(1) }; //, bubbleSize: Math.random() };
+        series1.push(point1);
+    }
+</script>

@@ -1,0 +1,782 @@
+﻿@{
+    ViewBag.Title = "Chart";
+    ViewData["ProductName"] = "Chart";
+    Layout = "~/Views/Shared/_Layout-NoHeaderNav.cshtml";
+}
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Charts
+@using Syncfusion.EJ2.DropDowns
+@using SyncfusionMvcASplineGraphApplication1.Controllers;
+
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/css/style.css" rel="stylesheet">
+<link href="~/Content/styles/Grid/style.css" rel="stylesheet">
+
+<style type="text/css">
+    .auto-style1 {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 100%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .auto-style2 {
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        text-align: center;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+</style>
+
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="auto-style1" id="headerBanner">
+                    <img alt="Peek Traffic, 5401 N Sam Houston Pkwy W, Houston TX 77086, 1-800-848-7025" class="img-fluid" style="max-width: 100%; height: auto;" src="~/Content/images/bnnr1.PNG" /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                Name:
+                                            </strong>
+                                        </td>
+                                        <td class="text-left">
+                                            085 (Seq #)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                Description:
+                                            </strong>
+                                        </td>
+                                        <td class="text-left">
+                                            DE Rt 20 E of MD Line
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                Site:
+                                            </strong>
+                                        </td>
+                                        <td class="text-left">
+                                            000000003409
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                City:
+                                            </strong>
+                                        </td>
+                                        <td class="text-left">
+                                            Seaford
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                Latitude:
+                                            </strong>
+                                        </td>
+                                        <td class="text-left">
+                                            0.000000 N
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                Started:
+                                            </strong>
+                                        </td>
+                                        <td class="text-left">
+                                            10/8/2020 0:00
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md-6">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td colspan="3">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                &nbsp;
+                                            </strong>
+                                        </td>
+                                        <td colspan="3">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                Station:
+                                            </strong>
+                                        </td>
+                                        <td colspan="3" class="text-left">
+                                            000000008085
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                County:
+                                            </strong>
+                                        </td>
+                                        <td class="text-left">
+                                            Sussex
+                                        </td>
+                                        <td class="text-left">
+                                            <strong>State</strong>:
+                                        </td>
+                                        <td class="text-left">
+                                            DE
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                Longitude:
+                                            </strong>
+                                        </td>
+                                        <td colspan="3" class="text-left">
+                                            0.000000 E
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>
+                                                Ended:
+                                            </strong>
+                                        </td>
+                                        <td colspan="3" class="text-left">
+                                            10/8/2020 23:59
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6" id="graph" style="text-align: left;">
+
+                    <div id="ControlRegion">
+                        @Html.EJS().Chart("container").PrimaryYAxis(py => py.Title("Value")).PrimaryXAxis(px => px.Title("Hour").IntervalType(IntervalType.Hours).
+                                ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)).Series(series =>
+                                {
+                                    //series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+                                    //    .DataSource(ViewBag.series4/*series2*/ /*"series1"*/)
+                                    //    .Name("series2(smoothed)")
+                                    //    .XName("Hour")
+                                    //    .YName("Value") /*.Size("bubbleSize")*/
+                                    //    .Add();
+
+                                    //series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+                                    //    .DataSource(ViewBag.series3 /*"series1"*/)
+                                    //    .Name("series3(smoothed)")
+                                    //    .XName("Date")
+                                    //    .YName("Value") /*.Size("bubbleSize")*/
+                                    //    .Add();
+
+
+                                    series.Type(
+                       Syncfusion.EJ2.Charts.ChartSeriesType.Line
+                   ).DataSource(ViewBag.series1).Name("Lane 01").XName("x").YName("y").Add();//.Size("bubbleSize").Add();
+
+                                    series.Type(
+                       Syncfusion.EJ2.Charts.ChartSeriesType.Line
+                   ).DataSource(ViewBag.series2).Name("Lane 02").XName("x").YName("y").Add();
+                                }
+                                         ).Render()
+                        <li>
+                            <span>
+                                Control list at: <a target="_blank"
+                                                    href="http://sp16.geek-ish.com/_layouts/15/start.aspx#/Lists/GraphWidgetTestData/AllItems.aspx#InplviewHash53757497-d10b-4ee8-b3b9-51aa209718b5=">http://sp16.geek-ish.com/.../Lists/GraphWidgetTestData/</a>
+                            </span>
+                        </li>
+                        <li>Excel: <a target="_blank" href="~/Content/xls/000000008085.xlsx"><img src="~/Content/images/Excel30x30.png" /></a></li>
+                        <li> Series Type - Line</li>
+                        <li> Theme - Bootstrap-Theme</li>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2">
+                    &nbsp;
+                </div>
+                <div class="col-md-8">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+        <div class="col-md-8">
+            <div class="control-section">
+                <br />
+                @Html.EJS().Grid("GridOverview").Columns(col =>
+                {
+                    //col.Type("checkbox").HeaderText("").Field("").Width("60").AllowFiltering(false).AllowSorting(false).Add();
+                    //col.Field("EmployeeID").Visible(false).IsPrimaryKey(true).HeaderText("Employee ID").Width("130").Add();
+                    col.Field("Interval").HeaderText("Interval").Width("200").Add();
+                    col.Field("Lane 01").HeaderText("Lane01").Width("200").Add();
+                    col.Field("Lane 02").HeaderText("Lane02").Width("200").Add();
+                    //col.Field("Designation").HeaderText("Designation").Width("170").Filter(new { type = "CheckBox" }).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+                    //col.Field("Mail").HeaderText("Mail").Width("230").Filter(new { type = "Menu" }).Add();
+                    //col.Field("Location").HeaderText("Location").Width("140").Filter(new { type = "CheckBox" }).Template("#coltemplate").Add();
+                    //col.Field("Status").HeaderText("Status").Width("150").Filter(new { type = "CheckBox", itemTemplate = "#StatusItemTemp" }).Template("#statusTemplate").Add();
+                    //col.Field("Trustworthiness").HeaderText("Trustworthiness").Filter(new { type = "CheckBox", itemTemplate = "${ trustTemp(data) }" }).Width("200").Template("#trustTemplate").Add();
+                    //col.Field("Rating").HeaderText("Rating").Width("160").Filter(new { type = "CheckBox", itemTemplate = "<div>${ratingDetail(data)}<div>" }).Template("#ratingTemplate").Add();
+                    //col.Field("Software").AllowFiltering(false).AllowSorting(false).HeaderText("Software").Width("180").Template("#progessTemplate").Add();
+                    //col.Field("CurrentSalary").HeaderText("Current Salary").Filter(new { type = "Menu" }).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("160").Add();
+                    //col.Field("Address").HeaderText("Address").Width("240").Filter(new { type = "Menu" }).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+
+                }).Load("load").Render()
+                @*.EnableVirtualization(true).Height("600").RowHeight(38).EnableHover(false).AllowSorting(true).Load("load").QueryCellInfo("queryCellInfo").DataBound("startTimer").ActionComplete("complete").AllowSelection(true).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple).PersistSelection(true).CheckboxOnly(true)).Render()*@
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Content/js/jquery.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/scripts.js"></script>
+
+<script type="text/x-jsrender" id="progessTemplate">
+    <div id="myProgress" class="pbar">
+        <div id="myBar" class="bar">
+            <div id="label" class="barlabel"></div>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/x-jsrender" id="ratingTemplate">
+    <div class="rating">
+        <span class="star">&#9733</span>
+        <span class="star">&#9733</span>
+        <span class="star">&#9733</span>
+        <span class="star">&#9733</span>
+        <span class="star">&#9733</span>
+    </div>
+</script>
+
+<script type="text/x-jsrender" id="empTemplate">
+    <div>
+        <div class="empimg">
+            <span class="e-userimg">
+            </span>
+        </div>
+        <span id="Emptext">${Employees}</span>
+    </div>
+</script>
+
+<script type="text/javascript">
+    var dReady = false;
+    var grid;
+    var theme;
+    var dtTime = false;
+    var isDataBound = false;
+    var isDataChanged = true;
+    var intervalFun;
+    var clrIntervalFun;
+    var clrIntervalFun1;
+    var clrIntervalFun2;
+    var dropSlectedIndex = null;
+    var stTime;
+    stTime = performance.now();
+    function trustTemp(e) {
+        if (e.Trustworthiness == "Select All") {
+            return '';
+        }
+        var name = e.Trustworthiness;
+        var newsrcFolder = '@Url.Content("~/Content/grid/")';
+        var newsrc = newsrcFolder + name + '.png';
+        return '<img style="width: 31px; height: 24px" src="' + newsrc + '"/> <span id="Trusttext">' + e.Trustworthiness + '</span>'
+    }
+    function ratingDetail(e) {
+        var grid = document.querySelector(".e-grid").ej2_instances[0]
+        var div = document.createElement('div');
+        div.className = 'rating';
+        var span;
+        for (var i = 0; i < 5; i++) {
+            if (i < e.Rating) {
+                span = document.createElement('span');
+                span.className = 'star checked';
+                span.innerHTML = '&#9733';
+                div.appendChild(span);
+            } else {
+                span = document.createElement('span');
+                span.className = 'star';
+                span.innerHTML = '&#9733';
+                div.appendChild(span);
+            }
+        }
+        return div.outerHTML;
+    }
+
+    function statusDetail(e) {
+        var grid = document.querySelector(".e-grid").ej2_instances[0]
+        var div = document.createElement('div');
+        var span;
+        span = document.createElement('span');
+        if (e.Status === "Active") {
+            span.className = 'statustxt e-activecolor';
+            span.textContent = "Active"
+            div.className = 'statustemp e-activecolor'
+        }
+        if (e.Status === "Inactive") {
+            span = document.createElement('span');
+            span.className = 'statustxt e-inactivecolor';
+            span.textContent = "Inactive"
+            div.className = 'statustemp e-inactivecolor'
+        }
+        div.appendChild(span);
+        return div.outerHTML;
+    }
+    function load(args) {
+        if (window.themeName === "highcontrast") {
+            document.getElementById("GridOverview").classList.add("e-hightheme");
+        }
+        var tradeCount = 25; //1000
+        this.dataSource = getTradeData(tradeCount);
+        this.on('data-ready', function () {
+            dReady = true;
+        });
+    }
+    function complete(args) {
+        if (args.requestType === "filterchoicerequest" && (args.filterModel.options.field === "Trustworthiness" || args.filterModel.options.field === "Rating"
+            || args.filterModel.options.field === "Status")) {
+            var span = args.filterModel.dialogObj.element.querySelectorAll('.e-selectall')[0];
+            if (!ej.base.isNullOrUndefined(span)) {
+                ej.base.closest(span, '.e-ftrchk').classList.add("e-hide");
+            }
+        }
+    }
+    function queryCellInfo(args) {
+        if (args.column.field === 'Employees') {
+            if (args.data.EmployeeImg === 'usermale') {
+                args.cell.querySelector('.e-userimg').classList.add("sf-icon-Male");
+            } else {
+                args.cell.querySelector('.e-userimg').classList.add("sf-icon-FeMale");
+            }
+        }
+        if (args.column.field === 'Status') {
+            if (args.cell.textContent === "Active") {
+                args.cell.querySelector(".statustxt").classList.add("e-activecolor");
+                args.cell.querySelector(".statustemp").classList.add("e-activecolor");
+            }
+            if (args.cell.textContent === "Inactive") {
+                args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
+                args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
+            }
+        }
+        if (args.column.field === 'Rating') {
+            if (args.column.field === 'Rating') {
+                for (var i = 0; i < args.data.Rating; i++) {
+                    args.cell.querySelectorAll("span")[i].classList.add("checked");
+                }
+            }
+        }
+        if (args.column.field === "Software") {
+            if (args.data.Software <= 20) {
+                args.data.Software = args.data.Software + 30;
+            }
+            args.cell.querySelector(".bar").style.width = args.data.Software + "%";
+            args.cell.querySelector(".barlabel").textContent = args.data.Software + "%";
+            if (args.data.Status === "Inactive") {
+                args.cell.querySelector(".bar").classList.add("progressdisable");
+            }
+        }
+    }
+    function startTimer(args) {
+        clearTimeout(clrIntervalFun);
+        clearInterval(intervalFun);
+        dtTime = true;
+    }
+    function valueChange() {
+        var grid = document.getElementById("GridOverview").ej2_instances[0];
+        this.closePopup();
+        grid.showSpinner();
+        dropSlectedIndex = null;
+        var index = this.value;
+        clearTimeout(clrIntervalFun2);
+        clrIntervalFun2 = setTimeout(function () {
+            isDataChanged = true;
+            stTime = null;
+            var contentElement = grid.contentModule.getPanel().firstChild;
+            contentElement.scrollLeft = 0;
+            contentElement.scrollTop = 0;
+            grid.pageSettings.currentPage = 1;
+            stTime = performance.now();
+            grid.dataSource = getTradeData(index);
+            grid.hideSpinner();
+        }, 100);
+    }
+
+    document.getElementById('GridOverview').addEventListener('DOMSubtreeModified', function () {
+        if (dReady && stTime && isDataChanged) {
+            var msgEle = document.getElementById('msg');
+            var val = (performance.now() - stTime).toFixed(0);
+            stTime = null;
+            dtTime = false;
+            dReady = false;
+            isDataChanged = false;
+            msgEle.innerHTML = 'Load Time: ' + "<b>" + val + "</b>" + '<b>ms</b>';
+            msgEle.classList.remove('e-hide');
+        }
+    });
+
+    function getTradeData(dataCount) {
+        var check = [true, false];
+        var Employees = [
+            'Michael', 'Kathryn', 'Tamer', 'Martin', 'Davolio', 'Nancy', 'Fuller', 'Leverling', 'Peacock',
+            'Margaret', 'Buchanan', 'Janet', 'Andrew', 'Callahan', 'Laura', 'Dodsworth', 'Anne',
+            'Bergs', 'Vinet', 'Anton', 'Fleet', 'Zachery', 'Van', 'King', 'Jack', 'Rose'
+        ];
+        var Designation = ['Manager', 'CFO', 'Designer', 'Developer', 'Program Directory', 'System Analyst', 'Project Lead'];
+        var Mail = ['sample.com', 'arpy.com', 'rpy.com', 'mail.com', 'jourrapide.com'];
+        var category = ['Energy', 'Financial', 'Technology', 'Industrial'];
+        var Location = ['UK', 'USA', 'Sweden', 'France', 'Canada', 'Argentina', 'Austria', 'Germany', 'Mexico'];
+        var Status = ['Active', 'Inactive'];
+        var Trustworthiness = ['Perfect', 'Sufficient', 'Insufficient'];
+        var tradeData = [];
+        var Address = ["59 rue de l'Abbaye", "Luisenstr. 48", "Rua do Paço, 67", "2, rue du Commerce", "Boulevard Tirou, 255",
+            "Rua do Paço, 67", "Hauptstr. 31", "Starenweg 5", "Rua do Mercado, 12", "Carrera 22 con Ave. Carlos Soublette #8-35", "Kirchgasse 6",
+            "Sierras de Granada 9993", "Mehrheimerstr. 369", "Rua da Panificadora, 12", "2817 Milton Dr.", "Kirchgasse 6", "Åkergatan 24", "24, place Kléber",
+            "Torikatu 38", "Berliner Platz 43", "5ª Ave. Los Palos Grandes", "1029 - 12th Ave. S.",
+            "Torikatu 38", "P.O. Box 555", "2817 Milton Dr.", "Taucherstraße 10", "59 rue de l'Abbaye", "Via Ludovico il Moro 22",
+            "Avda. Azteca 123", "Heerstr. 22", "Berguvsvägen  8", "Magazinweg 7", "Berguvsvägen  8", "Gran Vía, 1", "Gran Vía, 1",
+            "Carrera 52 con Ave. Bolívar #65-98 Llano Largo", "Magazinweg 7", "Taucherstraße 10", "Taucherstraße 10",
+            "Av. Copacabana, 267", "Strada Provinciale 124", "Fauntleroy Circus", "Av. dos Lusíadas, 23",
+            "Rua da Panificadora, 12", "Av. Inês de Castro, 414", "Avda. Azteca 123", "2817 Milton Dr."];
+        var EmployeeImg = ['usermale', 'userfemale'];
+        if (typeof dataCount === 'string') {
+            dataCount = parseInt(dataCount);
+        }
+        var siteLanes = [
+            { interval: "00:00", lane01: 23, lane02: 28 }, { interval: "01:00", lane01: 35, lane02: 7 }, { interval: "02:00", lane01: 56, lane02: 15 },
+            { interval: "03:00", lane01: 15, lane02: 30 }, { interval: "04:00", lane01: 30, lane02: 57 }, { interval: "05:00", lane01: 64, lane02: 97 },
+            { interval: "06:00", lane01: 155, lane02: 222 }, { interval: "07:00", lane01: 214, lane02: 196 }, { interval: "08:00", lane01: 159, lane02: 167 },
+            { interval: "09:00", lane01: 165, lane02: 136 }, { interval: "10:00", lane01: 150, lane02: 139 }, { interval: "11:00", lane01: 155, lane02: 151 },
+            { interval: "12:00", lane01: 185, lane02: 167 }, { interval: "13:00", lane01: 177, lane02: 172 }, { interval: "14:00", lane01: 199, lane02: 195 },
+            { interval: "15:00", lane01: 254, lane02: 179 }, { interval: "16:00", lane01: 294, lane02: 243 }, { interval: "17:00", lane01: 315, lane02: 227 },
+            { interval: "18:00", lane01: 171, lane02: 197 }, { interval: "19:00", lane01: 135, lane02: 133 }, { interval: "20:00", lane01: 74, lane02: 106 },
+            { interval: "21:00", lane01: 45, lane02: 67 }, { interval: "22:00", lane01: 52, lane02: 56 }, { interval: "23:00", lane01: 38, lane02: 30 }
+        ];
+        for (var i = 1; i <= dataCount; i++) {
+            var code = 10000;
+            tradeData.push({
+                'check': check[Math.floor(Math.random() * check.length)],
+                'EmployeeID': code + i,
+                'Employees': Employees[Math.floor(Math.random() * Employees.length)] + ' ' + Employees[Math.floor(Math.random() * Employees.length)],
+                'Designation': Designation[Math.floor(Math.random() * Designation.length)],
+                'Location': Location[Math.floor(Math.random() * Location.length)],
+                'Status': Status[Math.floor(Math.random() * Status.length)],
+                'Trustworthiness': Trustworthiness[Math.floor(Math.random() * Trustworthiness.length)],
+                'Rating': Math.floor(Math.random() * 5),
+                'Software': Math.floor(Math.random() * 100),
+                'EmployeeImg': EmployeeImg[Math.floor(Math.random() * EmployeeImg.length)],
+                'CurrentSalary': Math.floor((Math.random() * 100000)),
+                'Address': Address[Math.floor(Math.random() * Address.length)],
+                'Interval': i <= siteLanes.length ? siteLanes[i - 1].interval : "",
+                'Lane 01': i <= siteLanes.length ? siteLanes[i - 1].lane01 : 0,
+                'Lane 02': i <= siteLanes.length ? siteLanes[i - 1].lane02 : 0
+
+            });
+            var emp = tradeData[i - 1]["Employees"];
+            var sName = emp.substr(0, emp.indexOf(' ')).toLowerCase();
+            tradeData[i - 1]['Mail'] = sName + (Math.floor(Math.random() * 100) + 10) + '@@' + Mail[Math.floor(Math.random() * Mail.length)];
+        }
+        return tradeData;
+    }
+</script>
+
+<script type="text/x-jsrender" id="trustTemplate">
+    <img style="width: 31px; height: 24px" src="@Url.Content("~/Content/grid/${Trustworthiness}.png")" />
+    <span id="Trusttext">${Trustworthiness}</span>
+</script>
+
+<script type="text/x-jsrender" id="statusTemplate">
+    <div id="status" class="statustemp">
+        <span class="statustxt">${Status}</span>
+    </div>
+</script>
+
+<script type="text/x-jsrender" id="StatusItemTemp">
+    ${statusDetail(data)}
+</script>
+
+<script id="coltemplate" type="text/x-template">
+    <div class="image">
+        <img src="@Url.Content("~/Content/grid/Map.png")" class="e-image" alt="${Location}" /> &nbsp
+        <span id="locationtext">${Location}</span>
+    </div>
+</script>
+
+<style>
+    .fabric .empimg {
+        background-color: #0078d6;
+    }
+
+    .material .empimg {
+        background-color: #e3165b;
+    }
+
+    .highcontrast .empimg {
+        background-color: #ffd939;
+    }
+
+    _:-ms-fullscreen, :root .highcontrast .e-userimg.sf-icon-Male::before,
+    _:-ms-fullscreen, :root .highcontrast .e-userimg.sf-icon-FeMale::before {
+        color: black;
+    }
+
+    .highcontrast .e-userimg.sf-icon-Male::before,
+    .highcontrast .e-userimg.sf-icon-FeMale::before {
+        color: black;
+    }
+
+    .bootstrap .empimg {
+        background-color: #0078d6;
+    }
+
+    .bootstrap4 .empimg {
+        background-color: #0078d6;
+    }
+
+    #Emptext {
+        top: -12px;
+        left: 41px;
+        position: relative;
+    }
+
+    .e-grid.e-rtl #Emptext {
+        top: -12px;
+        left: -41px;
+        position: relative;
+    }
+
+    .empimg {
+        height: 27px;
+        width: 29px;
+        border-radius: 14px;
+    }
+
+
+    .e-userimg.sf-icon-Male::before,
+    .e-userimg.sf-icon-FeMale::before {
+        font-size: 13px;
+    }
+
+    .e-userimg.sf-icon-Male, .e-userimg.sf-icon-FeMale {
+        margin: 0px 8px;
+        line-height: 26px;
+        color: white;
+        font-size: 13px;
+    }
+
+        .e-userimg.sf-icon-Male::before {
+            content: '\e700';
+        }
+
+        .e-userimg.sf-icon-FeMale::before {
+            content: '\e701';
+        }
+
+
+    td.e-rowcell.e-selectionbackground.e-active {
+        background-color: transparent;
+    }
+
+    .e-hightheme td.e-rowcell.e-selectionbackground.e-active {
+        background-color: transparent;
+        color: white;
+    }
+
+    .e-bigger .e-grid .statustxt {
+        position: relative;
+        top: -2px;
+    }
+
+    .rating .star {
+        font-size: 132%;
+        color: lightgrey;
+    }
+
+        .rating .star.checked {
+            color: #ffa600;
+        }
+
+    td.e-rowcell .statustxt.e-activecolor {
+        color: #00cc00;
+        position: relative;
+        top: 9px;
+    }
+
+    td.e-rowcell .statustxt.e-inactivecolor {
+        color: #e60000;
+        position: relative;
+        top: 9px;
+    }
+
+    .statustemp.e-inactivecolor {
+        background-color: #ffd7cc;
+    }
+
+    .statustemp.e-activecolor {
+        background-color: #ccffcc;
+    }
+
+    .statustxt.e-activecolor {
+        color: #00cc00;
+    }
+
+    .statustxt.e-inactivecolor {
+        color: #e60000;
+    }
+
+    #Trusttext {
+        position: relative;
+        top: 1px;
+    }
+
+    .e-image {
+        height: 13px;
+        width: 14px;
+    }
+
+    .statustemp.e-inactivecolor {
+        width: 64px;
+    }
+
+    .statustemp.e-activecolor {
+        width: 57px;
+    }
+
+    .statustemp {
+        position: relative;
+        height: 19px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .highcontrast #msg {
+        color: #FFFFFF;
+    }
+
+
+    #msg {
+        font-family: "Segoe UI", "GeezaPro", "DejaVu Serif", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        opacity: 0.95;
+        color: #333;
+        float: right;
+        margin-top: 3px;
+    }
+
+    @@media only screen and (max-width: 370px) {
+        #msg {
+            float: left;
+            margin-top: 3px;
+        }
+
+        #GridOverview {
+            margin-top: 36px;
+        }
+    }
+
+    #samplecontainer {
+        padding-top: 5px;
+    }
+
+    #myProgress {
+        position: relative;
+        height: 18px;
+        width: 10em;
+        text-align: left;
+        background-color: white;
+    }
+
+    .highcontrast .e-grid #myProgress {
+        background-color: black;
+    }
+
+    #myBar {
+        position: absolute;
+        width: 10%;
+        height: 100%;
+        background-color: #00b300;
+    }
+
+        #myBar.progressdisable {
+            background-color: #df2222;
+        }
+
+    #label {
+        position: relative;
+        left: 10px;
+        line-height: 18px;
+        font-size: 10px;
+        color: white;
+    }
+</style>

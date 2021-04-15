@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "StockChart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+﻿@using Syncfusion.EJ2;
+<h2>StockChart Features:</h2>
+<br/>
+<li> Series Type - Line</li>
+<li> Range Selector</li>
+<li> Period Selector</li>
+<li> Theme - Bootstrap-Theme</li>
+<br/>
+<div id = "ControlRegion">
+        @(Html.EJS().StockChart("container")
+            .EnableSelector(true)
+            .EnablePeriodSelector(true)
+            .Series(sr =>
+            {
+                sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).DataSource("series1").XName("date").YName("value").High("high").Close("close").Open("open").Low("low").Add();
+            })
+          .Render())
+</div>
+<script>
+    var series1 = [];
+    var point1;
+    var value = 80;
+    var i;
+    for (i = 1; i < 100; i++) {
+        value = (Math.random() * Math.random()) % 1000;
+        point1 = {
+            date: new Date(2000, 1, i),
+            value: (Math.random() * Math.random()) % 1000,
+            y: value.toFixed(1),
+            high: value.toFixed(1) * 30,
+            low: value.toFixed(1) * -10,
+            open: value.toFixed(1) * 20,
+            close: value.toFixed(1) * -1
+        };
+        series1.push(point1);
+    }
+</script>

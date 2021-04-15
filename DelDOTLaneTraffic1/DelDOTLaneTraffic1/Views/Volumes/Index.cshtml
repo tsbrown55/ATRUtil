@@ -1,0 +1,105 @@
+﻿@model IEnumerable<DelDOTLaneTraffic1.Models.Volume>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StationId)
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Hour of Day
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane7)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane8)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane9)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lane10)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportDisplayDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportHour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane7)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane8)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane9)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lane10)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VolumeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VolumeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VolumeId })
+        </td>
+    </tr>
+}
+
+</table>
